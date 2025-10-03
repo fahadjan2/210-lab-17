@@ -1,3 +1,5 @@
+// COMSC-210 | Lab 17 | Fahad Fawad Ahmad 
+// IDE used: Visual Studio
 #include <iostream>
 using namespace std;
 
@@ -9,6 +11,11 @@ struct Node {
 };
 
 void output(Node *);
+void nodeAddFront(Node *);
+void nodeAddTail(Node *);
+void nodeDelete(Node *);
+void nodeInsert(Node *);
+void linkedListDelete(Node *);
 
 int main() {
     Node *head = nullptr;
@@ -33,17 +40,47 @@ int main() {
     }
     output(head);
 
+    Node * current = head;
+   
+
+    
+
+}
+
+void output(Node * hd) {
+    if (!hd) {
+        cout << "Empty list.\n";
+        return;
+    }
+    int count = 1;
+    Node * current = hd;
+    while (current) {
+        cout << "[" << count++ << "] " << current->value << endl;
+        current = current->next;
+    }
+    cout << endl;
+}
+
+void nodeAddFront(Node * head) {
+
+}
+
+void nodeAddTail(Node * head){
+
+}
+
+void nodeDelete(Node * head) {
     // deleting a node
     Node * current = head;
     cout << "Which node to delete? " << endl;
     output(head);
     int entry;
     cout << "Choice --> ";
-    cin >> entry;
+    cin >> entry;    
 
     // traverse that many times and delete that node
     current = head;
-    Node *prev = head;
+    Node * prev = head;
     for (int i = 0; i < (entry-1); i++)
         if (i == 0)
             current = current->next;
@@ -58,7 +95,9 @@ int main() {
         current = nullptr;
     }
     output(head);
+}
 
+void nodeInsert(Node * head) {
     // insert a node
     current = head;
     cout << "After which node to insert 10000? " << endl;
@@ -85,7 +124,9 @@ int main() {
     newnode->next = current;
     prev->next = newnode;
     output(head);
+}
 
+void linkedListDelete() {
     // deleting the linked list
     current = head;
     while (current) {
@@ -97,18 +138,4 @@ int main() {
     output(head);
 
     return 0;
-}
-
-void output(Node * hd) {
-    if (!hd) {
-        cout << "Empty list.\n";
-        return;
-    }
-    int count = 1;
-    Node * current = hd;
-    while (current) {
-        cout << "[" << count++ << "] " << current->value << endl;
-        current = current->next;
-    }
-    cout << endl;
 }
