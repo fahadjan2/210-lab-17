@@ -20,6 +20,7 @@ void linkedListDelete(Node *);
 int main() {
     Node *head = nullptr;
 
+    cout << "test" << endl;
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) {    
         if (!head) { // if this is the first node, it's the new head
@@ -31,7 +32,9 @@ int main() {
     }
     output(head);
 
-    
+    nodeDelete(head);
+    nodeInsert(head);
+    linkedListDelete(head);
 }
 
 void output(Node * hd) {
