@@ -11,7 +11,7 @@ struct Node {
 };
 
 void output(Node *);
-void nodeAddFront(Node *);
+void nodeAddHead(Node *);
 void nodeAddTail(Node *);
 void nodeDelete(Node *);
 void nodeInsert(Node *);
@@ -19,32 +19,19 @@ void linkedListDelete(Node *);
 
 int main() {
     Node *head = nullptr;
-    int count = 0;
 
     // create a linked list of size SIZE with random numbers 0-99
-    for (int i = 0; i < SIZE; i++) {
-        int tmp_val = rand() % 100;
-        Node *newVal = new Node;
-        
-        // adds node at head
+    for (int i = 0; i < SIZE; i++) {    
         if (!head) { // if this is the first node, it's the new head
-            head = newVal;
-            newVal->next = nullptr;
-            newVal->value = tmp_val;
+            nodeAddHead(head);
         }
         else { // its a second or subsequent node; place at the head
-            newVal->next = head;
-            newVal->value = tmp_val;
-            head = newVal;
+            nodeAddTail(head);
         }
     }
     output(head);
 
-    Node * current = head;
-   
-
     
-
 }
 
 void output(Node * hd) {
@@ -61,16 +48,27 @@ void output(Node * hd) {
     cout << endl;
 }
 
-void nodeAddFront(Node * head) {
-
+ // adds node at head
+void nodeAddHead(Node * head) {
+    int tmp_val = rand() % 100;
+    Node *newVal = new Node;
+    
+    head = newVal;
+    newVal->next = nullptr;
+    newVal->value = tmp_val;  
 }
 
-void nodeAddTail(Node * head){
+void nodeAddTail(Node * head) {
+    int tmp_val = rand() % 100;
+    Node *newVal = new Node;
 
+    newVal->next = head;
+    newVal->value = tmp_val;
+    head = newVal;
 }
 
+ // deleting a node
 void nodeDelete(Node * head) {
-    // deleting a node
     Node * current = head;
     cout << "Which node to delete? " << endl;
     output(head);
@@ -99,9 +97,10 @@ void nodeDelete(Node * head) {
 
 void nodeInsert(Node * head) {
     // insert a node
-    current = head;
+    Node * current = head;
+    int count = 1;
+    int entry;
     cout << "After which node to insert 10000? " << endl;
-    count = 1;
     while (current) {
         cout << "[" << count++ << "] " << current->value << endl;
         current = current->next;
@@ -110,7 +109,7 @@ void nodeInsert(Node * head) {
     cin >> entry;
 
     current = head;
-    prev = head;
+    Node * prev = head;
     for (int i = 0; i < (entry); i++)
         if (i == 0)
             current = current->next;
@@ -126,9 +125,9 @@ void nodeInsert(Node * head) {
     output(head);
 }
 
-void linkedListDelete() {
+void linkedListDelete(Node * head) {
     // deleting the linked list
-    current = head;
+    Node * current = head;
     while (current) {
         head = current->next;
         delete current;
@@ -136,6 +135,4 @@ void linkedListDelete() {
     }
     head = nullptr;
     output(head);
-
-    return 0;
 }
