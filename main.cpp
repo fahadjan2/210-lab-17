@@ -11,16 +11,16 @@ struct Node {
 };
 
 void output(Node *);
-void nodeAddHead(Node *);
-void nodeAddTail(Node *);
+void nodeAddHead(Node *&);
+void nodeAddTail(Node *&);
 void nodeDelete(Node *);
 void nodeInsert(Node *);
-void linkedListDelete(Node *);
+void linkedListDelete(Node *&);
 
 int main() {
     Node *head = nullptr;
 
-    cout << "test" << endl;
+    cout << "test222" << endl;
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) {    
         if (!head) { // if this is the first node, it's the new head
@@ -52,7 +52,7 @@ void output(Node * hd) {
 }
 
  // adds node at head
-void nodeAddHead(Node * head) {
+void nodeAddHead(Node *&head) {
     int tmp_val = rand() % 100;
     Node *newVal = new Node;
     
@@ -61,7 +61,7 @@ void nodeAddHead(Node * head) {
     newVal->value = tmp_val;  
 }
 
-void nodeAddTail(Node * head) {
+void nodeAddTail(Node *&head) {
     int tmp_val = rand() % 100;
     Node *newVal = new Node;
 
@@ -98,8 +98,8 @@ void nodeDelete(Node * head) {
     output(head);
 }
 
+ // insert a node
 void nodeInsert(Node * head) {
-    // insert a node
     Node * current = head;
     int count = 1;
     int entry;
@@ -128,7 +128,7 @@ void nodeInsert(Node * head) {
     output(head);
 }
 
-void linkedListDelete(Node * head) {
+void linkedListDelete(Node *&head) {
     // deleting the linked list
     Node * current = head;
     while (current) {
